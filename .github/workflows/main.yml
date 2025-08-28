@@ -1,0 +1,39 @@
+name: Proselint Linting
+
+on:
+  push:
+    branches:
+      - main
+
+# jobs:
+#   proselint:
+#     name: Proselint
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - name: Run Proselint
+#         uses: dhruvmanila/action-proselint@master
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Proselint
+        run: pip install proselint
+
+      - name: Run Proselint on Markdown files
+        run: |
+          # Find all .md files and run proselint on each
+          for file in $(find . -name "*.md"); do
+            echo "Linting $file"
+            proselint "$file"
+          done
