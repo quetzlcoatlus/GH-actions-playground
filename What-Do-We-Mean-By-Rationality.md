@@ -1,3 +1,5 @@
+John is very unique.
+
 1. Epistemic Rationality: systematically improving the accuracy of one’s beliefs
 2. Instrumental Rationality: systematically achieving one’s values
 
